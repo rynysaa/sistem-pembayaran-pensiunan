@@ -137,9 +137,9 @@
                 </a>
             </div>
             <div class="corporate-card-body p-0">
-                @if($pensiunan->rekenings && $pensiunan->rekenings->count() > 0)
+                @if($pensiunan->rekening && $pensiunan->rekening->count() > 0)
                     <div class="list-group list-group-flush">
-                        @foreach($pensiunan->rekenings as $rek)
+                        @foreach($pensiunan->rekening as $rek)
                             <div class="list-group-item p-3 d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-flex align-items-center gap-2 mb-1">

@@ -30,7 +30,7 @@ class PensiunanDashboardController extends Controller
 
         // Data profil rekening dan riwayat transaksi untuk pengguna pensiunan
         $rekeningAktif = $pensiunan
-            ? $pensiunan->rekenings()->where('status', 'aktif')->first()
+            ? $pensiunan->rekening()->where('status', 'aktif')->first()
             : null;
 
         $riwayatPembayaran = $pensiunan

@@ -21,7 +21,7 @@ class HrdDashboardController extends Controller
         $verifikasiDiterima = VerifikasiData::where('status', 'diterima')->count();
         $verifikasiDitolak  = VerifikasiData::where('status', 'ditolak')->count();
 
-        $pensiunanTerbaru = Pensiunan::with(['latestVerifikasi', 'rekenings'])
+        $pensiunanTerbaru = Pensiunan::with(['latestVerifikasi', 'rekening'])
             ->latest()
             ->limit(5)
             ->get();

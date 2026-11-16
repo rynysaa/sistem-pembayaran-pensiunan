@@ -70,6 +70,8 @@ class PensiunanController extends Controller
      */
     public function show(Pensiunan $pensiunan): View
     {
+        $pensiunan->load(['rekening', 'latestVerifikasi']);
+
         return view('hrd.pensiunan.show', compact('pensiunan'));
     }
 
