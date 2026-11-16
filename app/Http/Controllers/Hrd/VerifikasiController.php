@@ -42,10 +42,13 @@ class VerifikasiController extends Controller
         }
 
         // Urutkan status 'menunggu' prioritas di atas, lalu timestamp terbaru
-        $verifikasi = $query->orderByRaw("CASE WHEN verifikasi_data.status = 'menunggu' THEN 1 WHEN verifikasi_data.status = 'ditolak' THEN 2 ELSE 3 END")
+        $verifikasis = $query->orderByRaw("CASE WHEN verifikasi_data.status = 'menunggu' THEN 1 WHEN verifikasi_data.status = 'ditolak' THEN 2 ELSE 3 END")
             ->latest('verifikasi_data.updated_at')
             ->paginate(10)
             ->withQueryString();
+
+        // Alias kompatibilitas
+        $verifikasi = $verifikasis;
 
         // Ringkasan jumlah data berdasarkan status
         $totalSemua    = VerifikasiData::count();
@@ -54,6 +57,7 @@ class VerifikasiController extends Controller
         $totalDitolak  = VerifikasiData::where('status', 'ditolak')->count();
 
         return view('hrd.verifikasi.index', compact(
+            'verifikasis',
             'verifikasi',
             'totalSemua',
             'totalMenunggu',
